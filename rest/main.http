@@ -1,0 +1,42 @@
+### Vars
+@url = http://localhost:3000
+@userId = d9e6171c-80c9-4aff-8245-a20f50fd522a
+
+### -----
+### Index
+### -----
+GET {{url}}
+
+### -----------
+### Create User
+### -----------
+POST {{url}}/users
+Content-Type: application/json
+
+{
+	"name": "Jonathan",
+	"email": "jonathan21@email.com",
+	"password": "jojo1234"
+}
+
+### ---------
+### Read User
+### ---------
+GET {{url}}/users/{{userId}}
+
+### -----------
+### Update User
+### -----------
+PUT {{url}}/users/{{userId}}
+Content-Type: application/json
+
+{
+	"name": "Jolyne",
+	"email": "jolyne@email.com",
+	"password": "jojo123"
+}
+
+### -----------
+### Delete User
+### -----------
+DELETE {{url}}/users/{{userId}}

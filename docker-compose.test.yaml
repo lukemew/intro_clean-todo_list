@@ -1,0 +1,42 @@
+services:
+  db-test:
+    image: postgres:15-alpine
+    container_name: db-clean-api-test
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}_test
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER} -d ${DB_NAME}_test"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    networks:
+      - net
+
+  test-runner:
+    build:
+      context: .
+      target: development
+    command: npm run test
+    volumes:
+      - .:/usr/app
+      - /usr/app/node_modules
+    depends_on:
+      db-test:
+        condition: service_healthy
+    environment:
+      DB_HOST: db-test
+      DB_PORT: 5432
+      DB_USER: ${DB_USER}
+      DB_PASS: ${DB_PASS}
+      DB_NAME: ${DB_NAME}
+      JWT_SECRET: a-secret-for-testing
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
