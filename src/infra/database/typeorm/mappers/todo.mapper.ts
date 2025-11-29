@@ -5,7 +5,6 @@ export class TodoMapper {
   static toPersistence(todo: Todo): TodoModel {
     const model = new TodoModel();
     model.id = todo.id;
-    model.user_id = todo.userId;
     model.title = todo.title;
     model.description = todo.description ?? null;
     model.is_done = todo.isDone;
@@ -19,7 +18,6 @@ export class TodoMapper {
   static toDomain(model: TodoModel): Todo {
     return Todo.create(
       {
-        userId: model.user_id,
         title: model.title,
         description: model.description,
         isDone: model.is_done,

@@ -2,9 +2,7 @@ import { Todo } from "../entities/todo-entity.js";
 import type { ITodoRepository } from "../repositories/todo.repository.js";
 
 interface CreateTodoInputDTO {
-  userId: string;
   title: string;
-
   description?: string | undefined;
 }
 
@@ -21,7 +19,6 @@ export class CreateTodoUseCase {
 
   async execute(input: CreateTodoInputDTO): Promise<CreateTodoOutputDTO> {
     const todo = Todo.create({
-      userId: input.userId,
       title: input.title,
 
       description: input.description ?? null,

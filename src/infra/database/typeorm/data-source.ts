@@ -2,7 +2,8 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { env, isProd, isTest } from "config/env.js";
 import { DataSource } from "typeorm";
-import { UserModel } from "./models/todo.model.js";
+
+import { TodoModel } from "./models/todo.model.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,6 +19,6 @@ export const AppDataSource = new DataSource({
   synchronize: !isProd,
   logging: !isTest,
 
-  entities: [UserModel],
+  entities: [TodoModel],
   migrations: [path.join(__dirname, "migrations", "*.{ts,js}")],
 });

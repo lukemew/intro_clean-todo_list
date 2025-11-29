@@ -18,10 +18,8 @@ export class InMemoryTodoRepository implements ITodoRepository {
     return todo;
   }
 
-  async findAllByUserId(userId: string): Promise<Todo[]> {
-    return this.items.filter(
-      (item) => item.userId === userId && !item.deletedAt
-    );
+  async findAll(): Promise<Todo[]> {
+    return this.items.filter((item) => !item.deletedAt);
   }
 
   async save(todo: Todo): Promise<void> {

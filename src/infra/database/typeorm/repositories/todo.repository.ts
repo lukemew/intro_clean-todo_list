@@ -30,13 +30,8 @@ export class TypeOrmTodoRepository implements ITodoRepository {
     return TodoMapper.toDomain(model);
   }
 
-  async findAllByUserId(userId: string): Promise<Todo[]> {
-    const models = await this.repository.find({
-      where: {
-        user_id: userId,
-      },
-    });
-
+  async findAll(): Promise<Todo[]> {
+    const models = await this.repository.find(); // Sem where
     return models.map(TodoMapper.toDomain);
   }
 }

@@ -5,14 +5,12 @@ import { UniqueEntityID } from "../entities/value-objects/unique-entity-id.vo.js
 describe("Todo Entity", () => {
   it("should be able to create a new todo", () => {
     const todo = Todo.create({
-      userId: "user-123",
       title: "Estudar Clean Architecture",
       description: "Ler o livro do Uncle Bob",
     });
 
     expect(todo).toBeTruthy();
     expect(todo.id).toBeTruthy();
-    expect(todo.userId).toBe("user-123");
     expect(todo.title).toBe("Estudar Clean Architecture");
     expect(todo.isDone).toBe(false);
     expect(todo.createdAt).toBeInstanceOf(Date);
@@ -22,7 +20,6 @@ describe("Todo Entity", () => {
     const existingId = "123e4567-e89b-12d3-a456-426614174000";
     const todo = Todo.create(
       {
-        userId: "user-123",
         title: "Tarefa antiga",
       },
       existingId
@@ -33,7 +30,6 @@ describe("Todo Entity", () => {
 
   it("should be able to mark a todo as done", () => {
     const todo = Todo.create({
-      userId: "user-123",
       title: "Tarefa",
     });
 
@@ -48,7 +44,6 @@ describe("Todo Entity", () => {
 
   it("should be able to update title", () => {
     const todo = Todo.create({
-      userId: "user-123",
       title: "Título Antigo",
     });
 

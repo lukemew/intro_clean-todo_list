@@ -12,9 +12,6 @@ export class TodoModel {
   @PrimaryColumn("uuid")
   id!: string;
 
-  @Column({ type: "uuid" })
-  user_id!: string;
-
   @Column({ type: "varchar", length: 255 })
   title!: string;
 

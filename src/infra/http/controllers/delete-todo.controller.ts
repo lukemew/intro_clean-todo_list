@@ -9,11 +9,9 @@ export class DeleteTodoController {
     request: FastifyRequest<{ Params: TodoParams }>,
     reply: FastifyReply
   ) {
-    const userId = request.user.sub;
     const { id } = request.params;
 
     await this.deleteTodoUseCase.execute({
-      userId,
       todoId: id,
     });
 

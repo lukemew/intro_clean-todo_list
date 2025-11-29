@@ -1,42 +1,25 @@
-### Vars
-@url = http://localhost:3000
-@userId = d9e6171c-80c9-4aff-8245-a20f50fd522a
+@baseUrl = http://localhost:3333
 
-### -----
-### Index
-### -----
-GET {{url}}
-
-### -----------
-### Create User
-### -----------
-POST {{url}}/users
+### 1. Criar Tarefa
+POST {{baseUrl}}/todos
 Content-Type: application/json
 
 {
-	"name": "Jonathan",
-	"email": "jonathan21@email.com",
-	"password": "jojo1234"
+  "title": "Minha Primeira Tarefa Pública",
+  "description": "Funcionou sem login!"
 }
 
-### ---------
-### Read User
-### ---------
-GET {{url}}/users/{{userId}}
+### 2. Listar Todas
+# Copie o ID que aparecer aqui para usar nos próximos
+GET {{baseUrl}}/todos
 
-### -----------
-### Update User
-### -----------
-PUT {{url}}/users/{{userId}}
+### 3. Atualizar (Marcar como Feita)
+PATCH {{baseUrl}}/todos/019ad027-78ee-74e9-8324-dcd270898d93
 Content-Type: application/json
 
 {
-	"name": "Jolyne",
-	"email": "jolyne@email.com",
-	"password": "jojo123"
+  "isDone": true
 }
 
-### -----------
-### Delete User
-### -----------
-DELETE {{url}}/users/{{userId}}
+### 4. Deletar
+DELETE {{baseUrl}}/todos/019ad027-78ee-74e9-8324-dcd270898d93

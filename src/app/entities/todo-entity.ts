@@ -1,7 +1,6 @@
 import { Entity } from "./entity.js";
 
 export interface TodoProps {
-  userId: string;
   title: string;
   description?: string | null;
   isDone: boolean;
@@ -32,10 +31,6 @@ export class Todo extends Entity<TodoProps> {
     );
 
     return todo;
-  }
-
-  public get userId(): string {
-    return this.props.userId;
   }
 
   public get title(): string {

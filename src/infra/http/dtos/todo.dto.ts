@@ -12,7 +12,7 @@ export const updateTodoBodySchema = z.object({
 });
 
 export const todoParamsSchema = z.object({
-  id: z.string().uuid("Invalid UUID format"),
+  id: z.string(),
 });
 
 export type CreateTodoBody = z.infer<typeof createTodoBodySchema>;

@@ -9,12 +9,10 @@ export class UpdateTodoController {
     request: FastifyRequest<{ Params: TodoParams; Body: UpdateTodoBody }>,
     reply: FastifyReply
   ) {
-    const userId = request.user.sub;
     const { id } = request.params;
     const { title, description, isDone } = request.body;
 
     const output = await this.updateTodoUseCase.execute({
-      userId,
       todoId: id,
       title,
       description,

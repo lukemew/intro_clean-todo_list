@@ -2,7 +2,6 @@ import { TodoNotFoundError } from "../errors/application/todo-not-found.error.js
 import type { ITodoRepository } from "../repositories/todo.repository.js";
 
 interface UpdateTodoInputDTO {
-  userId: string;
   todoId: string;
   title?: string | undefined;
   description?: string | undefined;
@@ -23,10 +22,6 @@ export class UpdateTodoUseCase {
     const todo = await this.todoRepository.findById(input.todoId);
 
     if (!todo) {
-      throw new TodoNotFoundError();
-    }
-
-    if (todo.userId !== input.userId) {
       throw new TodoNotFoundError();
     }
 

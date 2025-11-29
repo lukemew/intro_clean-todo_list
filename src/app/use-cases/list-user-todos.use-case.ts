@@ -1,10 +1,6 @@
 import type { ITodoRepository } from "../repositories/todo.repository.js";
 
-interface ListUserTodosInputDTO {
-  userId: string;
-}
-
-interface ListUserTodosOutputDTO {
+interface ListTodosOutputDTO {
   todos: {
     id: string;
     title: string;
@@ -13,11 +9,13 @@ interface ListUserTodosOutputDTO {
   }[];
 }
 
-export class ListUserTodosUseCase {
+export class ListTodosUseCase {
+  // Mudou o nome
   constructor(private readonly todoRepository: ITodoRepository) {}
 
-  async execute(input: ListUserTodosInputDTO): Promise<ListUserTodosOutputDTO> {
-    const todos = await this.todoRepository.findAllByUserId(input.userId);
+  async execute(): Promise<ListTodosOutputDTO> {
+    // Sem input
+    const todos = await this.todoRepository.findAll();
 
     return {
       todos: todos.map((todo) => ({
