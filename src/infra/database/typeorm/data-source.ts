@@ -1,23 +1,23 @@
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { env, isProd, isTest } from 'config/env.js';
-import { DataSource } from 'typeorm';
-import { UserModel } from './models/user.model.js';
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import { env, isProd, isTest } from "config/env.js";
+import { DataSource } from "typeorm";
+import { UserModel } from "./models/todo.model.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const AppDataSource = new DataSource({
-	type: 'postgres',
-	host: env.DB_HOST,
-	port: env.DB_PORT,
-	username: env.DB_USER,
-	password: env.DB_PASS,
-	database: isTest ? `${env.DB_NAME}_test` : env.DB_NAME,
+  type: "postgres",
+  host: env.DB_HOST,
+  port: env.DB_PORT,
+  username: env.DB_USER,
+  password: env.DB_PASS,
+  database: isTest ? `${env.DB_NAME}_test` : env.DB_NAME,
 
-	synchronize: !isProd,
-	logging: !isTest,
+  synchronize: !isProd,
+  logging: !isTest,
 
-	entities: [UserModel],
-	migrations: [path.join(__dirname, 'migrations', '*.{ts,js}')],
+  entities: [UserModel],
+  migrations: [path.join(__dirname, "migrations", "*.{ts,js}")],
 });

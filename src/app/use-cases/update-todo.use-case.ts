@@ -4,9 +4,9 @@ import type { ITodoRepository } from "../repositories/todo.repository.js";
 interface UpdateTodoInputDTO {
   userId: string;
   todoId: string;
-  title?: string;
-  description?: string;
-  isDone?: boolean;
+  title?: string | undefined;
+  description?: string | undefined;
+  isDone?: boolean | undefined;
 }
 
 interface UpdateTodoOutputDTO {

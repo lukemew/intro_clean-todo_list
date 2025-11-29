@@ -4,7 +4,8 @@ import type { ITodoRepository } from "../repositories/todo.repository.js";
 interface CreateTodoInputDTO {
   userId: string;
   title: string;
-  description?: string;
+
+  description?: string | undefined;
 }
 
 interface CreateTodoOutputDTO {
