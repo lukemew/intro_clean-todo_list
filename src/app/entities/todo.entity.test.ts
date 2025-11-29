@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { Todo } from "../../../app/entities/todo.entity.js";
-import { UniqueEntityID } from "../../../app/entities/value-objects/unique-entity-id.vo.js";
+import { Todo } from "../entities/todo-entity.js";
+import { UniqueEntityID } from "../entities/value-objects/unique-entity-id.vo.js";
 
 describe("Todo Entity", () => {
   it("should be able to create a new todo", () => {
